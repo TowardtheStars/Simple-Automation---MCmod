@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "simpauto:farmer"
+  },
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "#%#",
+    "/*/",
+    "#/#"
+  ],
+  "key": {
+    "*": {
+      "item": "minecraft:ender_eye"
+    },
+    "#": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "%": {
+      "item": "minecraft:diamond_hoe"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  }
+}
