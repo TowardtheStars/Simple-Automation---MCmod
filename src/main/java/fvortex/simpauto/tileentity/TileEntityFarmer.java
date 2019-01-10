@@ -71,6 +71,11 @@ public class TileEntityFarmer extends TileEntity implements ITickable
         List<ItemStack> dropList;
         Block block = blockState.getBlock();
         dropList = block.getDrops(world, pos, blockState, 0);
+        for (ItemStack stack :
+                dropList) {
+            if (stack.getCount() > 1)
+                stack.shrink(1);
+        }
         return dropList;
     }
 
