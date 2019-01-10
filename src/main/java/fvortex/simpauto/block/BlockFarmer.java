@@ -3,6 +3,7 @@ package fvortex.simpauto.block;
 import fvortex.simpauto.tileentity.TileEntityFarmer;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -16,7 +17,7 @@ public class BlockFarmer extends BlockContainer
 
     public BlockFarmer()
     {
-        super(Material.IRON);
+        super(Material.IRON, MapColor.IRON);
         this.setUnlocalizedName("farmer");
 //        this.setRegistryName("farmer");
         this.setHardness(0.5F);

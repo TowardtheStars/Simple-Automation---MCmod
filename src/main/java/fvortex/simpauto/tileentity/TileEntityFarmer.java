@@ -2,17 +2,16 @@ package fvortex.simpauto.tileentity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+
+import java.util.List;
 
 public class TileEntityFarmer extends TileEntity implements ITickable
 {
@@ -46,7 +45,7 @@ public class TileEntityFarmer extends TileEntity implements ITickable
             tile = this.world.getTileEntity(this.pos.down());
 
         IBlockState managing = this.world.getBlockState(currentManagingPos);
-        if (isBlockHarvetable(this.world, currentManagingPos, managing))
+        if (isBlockHarvestable(this.world, currentManagingPos, managing))
             if (tile != null)
             {
                 inventory = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -57,47 +56,32 @@ public class TileEntityFarmer extends TileEntity implements ITickable
             }
     }
 
-    private static boolean isBlockHarvetable(World world, BlockPos pos, IBlockState blockState)
+    private static boolean isBlockHarvestable(World world, BlockPos pos, IBlockState blockState)
     {
         Block block = blockState.getBlock();
-        if (blockState.getBlock() instanceof IGrowable)
-            return !((IGrowable)block).canGrow(world, pos, blockState, !world.isRemote);
-
+        if (block instanceof IGrowable)
+            return !((IGrowable) block).canGrow(world, pos, blockState, !world.isRemote);
 
         return false;
+    }
+
+    private static List<ItemStack> getHarvestItemList
+            (World world, BlockPos pos, IBlockState blockState)
+    {
+        List<ItemStack> dropList;
+        Block block = blockState.getBlock();
+        dropList = block.getDrops(world, pos, blockState, 0);
+        return dropList;
     }
 
 
     private static void harvest(World world, BlockPos pos, IBlockState blockState, IItemHandler inventory)
     {
-        NonNullList<ItemStack> dropList = NonNullList.create();
+        List<ItemStack> dropList;
 
-        // check if there is enough place for harvest
-        boolean shouldHarvest = true;
-        blockState.getBlock().getDrops(dropList, world, pos, blockState, 0);
-        for (ItemStack stack :
-                dropList) {
-
-            ItemStack leftOver;
-            leftOver = stack;
-            for (int i = 0; i < inventory.getSlots(); i++) {
-                leftOver = inventory.insertItem(i, leftOver, true);
-            }
-            shouldHarvest = shouldHarvest && leftOver.isEmpty();
-            if (!shouldHarvest) break;
-        }
-
-        PropertyInteger age = null;
-        for (IProperty p:
-                blockState.getPropertyKeys()) {
-            if (p.getName().equals("age"))
-            {
-                age = (PropertyInteger) p;
-                break;
-            }
-        }
-
-        if (shouldHarvest && age != null)
+        // check if there is enough place for harvest first
+        dropList = getHarvestItemList(world, pos, blockState);
+        if (canInsertItemStackList(dropList, inventory))
         {
             for (ItemStack stack :
                     dropList) {
@@ -105,8 +89,23 @@ public class TileEntityFarmer extends TileEntity implements ITickable
                     stack = inventory.insertItem(i, stack, false);
                 }
             }
-            world.setBlockState(pos, blockState.withProperty(age, 0), 2);
+            world.setBlockState(pos, blockState.getBlock().getDefaultState());
         }
+    }
+
+    public static boolean canInsertItemStackList(List<ItemStack> dropList, IItemHandler inventory)
+    {
+        boolean shouldHarvest = true;
+        for (ItemStack stack : dropList) {
+            ItemStack leftOver;
+            leftOver = stack;
+            for (int i = 0; i < inventory.getSlots(); i++) {
+                leftOver = inventory.insertItem(i, leftOver, true);
+            }
+            shouldHarvest = shouldHarvest && leftOver.isEmpty();
+            if (!shouldHarvest) return false;
+        }
+        return shouldHarvest;
     }
 
 
