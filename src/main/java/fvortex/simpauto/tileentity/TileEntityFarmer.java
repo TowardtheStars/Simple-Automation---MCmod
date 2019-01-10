@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TileEntityFarmer extends TileEntity implements ITickable
 {
-    public static final int RANGE = 9;
+    private static final int RANGE = 9;
     private int ticker;
     private int posCounter;
     private static final int TICK_SPEED = 5;
@@ -59,10 +59,7 @@ public class TileEntityFarmer extends TileEntity implements ITickable
     private static boolean isBlockHarvestable(World world, BlockPos pos, IBlockState blockState)
     {
         Block block = blockState.getBlock();
-        if (block instanceof IGrowable)
-            return !((IGrowable) block).canGrow(world, pos, blockState, !world.isRemote);
-
-        return false;
+        return (block instanceof IGrowable) && !((IGrowable) block).canGrow(world, pos, blockState, !world.isRemote);
     }
 
     private static List<ItemStack> getHarvestItemList
@@ -100,17 +97,15 @@ public class TileEntityFarmer extends TileEntity implements ITickable
 
     public static boolean canInsertItemStackList(List<ItemStack> dropList, IItemHandler inventory)
     {
-        boolean shouldHarvest = true;
         for (ItemStack stack : dropList) {
             ItemStack leftOver;
             leftOver = stack;
             for (int i = 0; i < inventory.getSlots(); i++) {
                 leftOver = inventory.insertItem(i, leftOver, true);
             }
-            shouldHarvest = shouldHarvest && leftOver.isEmpty();
-            if (!shouldHarvest) return false;
+            if (!leftOver.isEmpty()) return false;
         }
-        return shouldHarvest;
+        return true;
     }
 
 
