@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "enabled=true,facing=up": { "model": "simpauto:hopper_up", "x":180},
+    "enabled=true,facing=north": { "model": "simpauto:hopper_side", "y": 180, "x":180 },
+    "enabled=true,facing=south": { "model": "simpauto:hopper_side", "y": 0, "x":180 },
+    "enabled=true,facing=west": { "model": "simpauto:hopper_side", "y": 90, "x":180 },
+    "enabled=true,facing=east": { "model": "simpauto:hopper_side", "y": 270, "x":180 },
+    "enabled=false,facing=up": { "model": "simpauto:hopper_up", "x":180 },
+    "enabled=false,facing=north": { "model": "simpauto:hopper_side", "y": 180, "x":180 },
+    "enabled=false,facing=south": { "model": "simpauto:hopper_side", "y": 0, "x":180 },
+    "enabled=false,facing=west": { "model": "simpauto:hopper_side", "y": 90, "x":180 },
+    "enabled=false,facing=east": { "model": "simpauto:hopper_side", "y": 270, "x":180 }
+  }
+}

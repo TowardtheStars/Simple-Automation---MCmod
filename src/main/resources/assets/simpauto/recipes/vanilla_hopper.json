@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "minecraft:hopper"
+  },
+  "type": "minecraft:crafting_shaped",
+  "pattern":[
+    "#"
+  ],
+  "key":{
+    "#": {
+      "item":"simpauto:upside_down_hopper"
+    }
+  }
+}

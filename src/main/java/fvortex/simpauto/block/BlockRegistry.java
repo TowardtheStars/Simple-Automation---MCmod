@@ -34,7 +34,7 @@ public class BlockRegistry {
     {
         registerBlock(blockFarmer, "farmer");
 //        registerBlock(blockItemDropper, "item_dropper");
-//        registerBlock(blockUpSideDownHopper, "upside_down_hopper");
+        registerBlock(blockUpSideDownHopper, "upside_down_hopper");
     }
 
     @SideOnly(Side.CLIENT)
@@ -42,7 +42,15 @@ public class BlockRegistry {
     {
         for (Block block:blockList) {
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-                    new ModelResourceLocation(block.getRegistryName(), "normal"));
+                    new ModelResourceLocation(block.getRegistryName(), "inventory"));
         }
+//        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockUpSideDownHopper), 1,
+//                new ModelResourceLocation(blockUpSideDownHopper.getRegistryName(), "inventory"));
+//        for (int i = 2; i <= 6; i++) {
+//            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockUpSideDownHopper), i,
+//                    new ModelResourceLocation(blockUpSideDownHopper.getRegistryName(), "inventory"));
+//        }
+
+
     }
 }

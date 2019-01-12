@@ -15,6 +15,6 @@ public class TileEntityRegistry {
     {
         registerTileEntity(TileEntityFarmer.class, "AutoFarmer");
 //        registerTileEntity(TileEntityItemDropper.class, "ItemDropper");
-//        registerTileEntity(TileEntityUpSideDownHopper.class, "UpsideDownDropper");
+        registerTileEntity(TileEntityUpSideDownHopper.class, "UpsideDownDropper");
     }
 }
