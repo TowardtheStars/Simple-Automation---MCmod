@@ -26,7 +26,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class TileEntityUpSideDownHopper extends TileEntityLockableLoot implements IHopper, ITickable {
+//public class TileEntityUpSideDownHopper extends TileEntityLockableLoot implements IHopper, ITickable {
+public class TileEntityUpSideDownHopper extends TileEntityHopper {
     private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(5, ItemStack.EMPTY);
     private int transferCooldown = -1;
     private long tickedGameTime;
@@ -424,16 +425,16 @@ public class TileEntityUpSideDownHopper extends TileEntityLockableLoot implement
             }
 
             if (flag) {
-                if (flag1 && destination instanceof TileEntityUpSideDownHopper) {
-                    TileEntityUpSideDownHopper tileentityhopper1 = (TileEntityUpSideDownHopper) destination;
+                if (flag1 && destination instanceof TileEntityHopper) {
+                    TileEntityHopper tileentityhopper1 = (TileEntityHopper) destination;
 
                     if (!tileentityhopper1.mayTransfer()) {
                         int k = 0;
 
-                        if (source != null && source instanceof TileEntityUpSideDownHopper) {
-                            TileEntityUpSideDownHopper tileentityhopper = (TileEntityUpSideDownHopper) source;
+                        if (source != null && source instanceof TileEntityHopper) {
+                            TileEntityHopper tileentityhopper = (TileEntityHopper) source;
 
-                            if (tileentityhopper1.tickedGameTime >= tileentityhopper.tickedGameTime) {
+                            if (tileentityhopper1.getLastUpdateTime() >= tileentityhopper.getLastUpdateTime()) {
                                 k = 1;
                             }
                         }

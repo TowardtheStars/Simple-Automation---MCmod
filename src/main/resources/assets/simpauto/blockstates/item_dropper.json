@@ -1,0 +1,10 @@
+{
+  "varients": {
+    "facing=up":{"model": "simpauto:item_dropper_vertical"},
+    "facing=down":{"model":"simpauto:item_dropper_vertical","x":180},
+    "facing=north":{"model":"simpauto:item_dropper_horizontal"},
+    "facing=east":{"model":"simpauto:item_dropper_horizontal", "x":90},
+    "facing=south":{"model":"simpauto:item_dropper_horizontal", "x":180},
+    "facing=west":{"model":"simpauto:item_dropper_horizontal", "x":270}
+  }
+}

@@ -33,7 +33,7 @@ public class BlockRegistry {
     public static void preInit()
     {
         registerBlock(blockFarmer, "farmer");
-//        registerBlock(blockItemDropper, "item_dropper");
+        registerBlock(blockItemDropper, "item_dropper");
         registerBlock(blockUpSideDownHopper, "upside_down_hopper");
     }
 

@@ -10,17 +10,18 @@
   ],
   "key": {
     "*": {
-      "item": "minecraft:ender_eye"
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
     },
     "#": {
       "type": "forge:ore_dict",
       "ore": "ingotIron"
     },
     "%": {
-      "item": "minecraft:diamond_hoe"
+      "item": "simpauto:upside_down_hopper"
     },
     "/": {
-      "item": "minecraft:stick"
+      "item": "minecraft:ender_eye"
     }
   }
 }

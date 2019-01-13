@@ -14,7 +14,7 @@ public class TileEntityRegistry {
     public TileEntityRegistry(FMLPreInitializationEvent event)
     {
         registerTileEntity(TileEntityFarmer.class, "AutoFarmer");
-//        registerTileEntity(TileEntityItemDropper.class, "ItemDropper");
+        registerTileEntity(TileEntityItemDropper.class, "ItemDropper");
         registerTileEntity(TileEntityUpSideDownHopper.class, "UpsideDownDropper");
     }
 }

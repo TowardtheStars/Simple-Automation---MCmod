@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "simpauto:item_dropper"
+  },
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#*",
+    "%/"
+  ],
+  "key": {
+    "*": {
+      "item": "minecraft:redstone"
+    },
+    "#": {
+      "item": "minecraft:stone",
+      "data":0
+    },
+    "%": {
+      "item": "minecraft:redstone_torch"
+    },
+    "/": {
+      "item": "minecraft:dropper"
+    }
+  }
+}

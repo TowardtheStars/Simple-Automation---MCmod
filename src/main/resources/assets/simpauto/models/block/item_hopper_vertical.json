@@ -1,0 +1,8 @@
+{
+  "parent":"block/orientable_vertical",
+  "textures":{
+    "side":"simpauto:blocks/item_dropper_side",
+    "down":"blocks/furnace_top",
+    "front":"item_dropper_front_vertical"
+  }
+}
