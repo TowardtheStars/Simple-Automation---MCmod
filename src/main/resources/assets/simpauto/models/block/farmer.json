@@ -1,6 +1,12 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "simpauto:blocks/farmer"
+    "particle": "simpauto:blocks/farmer_down",
+    "down": "simpauto:blocks/farmer_down",
+    "up": "simpauto:blocks/farmer_top",
+    "north": "simpauto:blocks/farmer_ns",
+    "east": "simpauto:blocks/farmer_ew",
+    "south": "simpauto:blocks/farmer_ns",
+    "west": "simpauto:blocks/farmer_ew"
   }
 }
