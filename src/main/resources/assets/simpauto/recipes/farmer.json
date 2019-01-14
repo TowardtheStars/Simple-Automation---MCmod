@@ -6,12 +6,11 @@
   "pattern": [
     "#%#",
     "/*/",
-    "#/#"
+    "#$#"
   ],
   "key": {
     "*": {
-      "type": "forge:ore_dict",
-      "ore": "gemDiamond"
+      "item":"simpauto:auto_core"
     },
     "#": {
       "type": "forge:ore_dict",
@@ -21,7 +20,11 @@
       "item": "simpauto:upside_down_hopper"
     },
     "/": {
-      "item": "minecraft:ender_eye"
+      "type":"forge:ore_dict",
+      "ore":"cropWheat"
+    },
+    "$":{
+      "item":"minecraft:stick"
     }
   }
 }

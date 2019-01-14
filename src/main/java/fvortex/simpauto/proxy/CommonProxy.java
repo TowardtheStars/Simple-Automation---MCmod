@@ -10,12 +10,13 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event)
     {
 
-        ItemRegistry.init();
+
     }
 
     public void preInit(FMLPreInitializationEvent event)
     {
         BlockRegistry.preInit();
+        ItemRegistry.preInit();
         new TileEntityRegistry(event);
     }
 }

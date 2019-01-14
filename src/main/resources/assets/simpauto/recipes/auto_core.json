@@ -1,0 +1,20 @@
+{
+  "result":{
+    "item":"simpauto:auto_core"
+  },
+  "type":"forge:ore_shaped",
+  "pattern":[
+    " # ",
+    "#*#",
+    " # "
+  ],
+  "key":{
+    "*":{
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "#":{
+      "item":"minecraft:ender_eye"
+    }
+  }
+}
