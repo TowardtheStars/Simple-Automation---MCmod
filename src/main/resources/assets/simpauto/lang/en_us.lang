@@ -1,5 +1,6 @@
 tile.upside_down_hopper.name=Up-side Down Hopper
 tile.farmer.name=Auto Farmer
+tile.farmer.tooltip=Automatically harvest any growable crops in a 9x9 area, place a container on top of this to make it work.
 tile.item_dropper.name=Item Dropper
 item.auto_core.name=Auto Core
 itemGroup.simpauto=Simple Automation

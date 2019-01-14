@@ -1,5 +1,6 @@
 tile.upside_down_hopper.name=倒置的漏斗
 tile.farmer.name=自动收割机
+tile.farmer.tooltip=自动收割周围9x9区域内的作物，将一个带物品栏的方块置于其上以激活
 tile.item_dropper.name=物品投掷机
 item.auto_core.name=自动化核心
 itemGroup.simpauto=简单自动化
