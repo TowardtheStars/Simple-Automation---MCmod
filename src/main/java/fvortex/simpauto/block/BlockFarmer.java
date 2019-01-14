@@ -18,8 +18,6 @@ public class BlockFarmer extends BlockContainer
     public BlockFarmer()
     {
         super(Material.IRON, MapColor.IRON);
-        this.setUnlocalizedName("farmer");
-//        this.setRegistryName("farmer");
         this.setHardness(0.5F);
         this.setSoundType(SoundType.METAL);
         this.setHarvestLevel("", 0);

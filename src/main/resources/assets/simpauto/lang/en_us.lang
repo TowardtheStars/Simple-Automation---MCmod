@@ -1,4 +1,5 @@
 tile.upside_down_hopper.name=Up-side Down Hopper
 tile.farmer.name=Auto Farmer
 tile.item_dropper.name=Item Dropper
+item.auto_core.name=Auto Core
 itemGroup.simpauto=Simple Automation

@@ -1,4 +1,5 @@
 tile.upside_down_hopper.name=倒置的漏斗
 tile.farmer.name=自动收割机
 tile.item_dropper.name=物品投掷机
+item.auto_core.name=自动化核心
 itemGroup.simpauto=简单自动化

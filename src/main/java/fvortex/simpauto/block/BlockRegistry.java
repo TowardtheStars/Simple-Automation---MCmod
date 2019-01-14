@@ -44,13 +44,6 @@ public class BlockRegistry {
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
                     new ModelResourceLocation(block.getRegistryName(), "inventory"));
         }
-//        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockUpSideDownHopper), 1,
-//                new ModelResourceLocation(blockUpSideDownHopper.getRegistryName(), "inventory"));
-//        for (int i = 2; i <= 6; i++) {
-//            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockUpSideDownHopper), i,
-//                    new ModelResourceLocation(blockUpSideDownHopper.getRegistryName(), "inventory"));
-//        }
-
 
     }
 }
