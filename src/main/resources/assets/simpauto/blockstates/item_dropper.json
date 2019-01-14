@@ -1,10 +1,16 @@
 {
-  "varients": {
-    "facing=up":{"model": "simpauto:item_dropper_vertical"},
-    "facing=down":{"model":"simpauto:item_dropper_vertical","x":180},
-    "facing=north":{"model":"simpauto:item_dropper_horizontal"},
-    "facing=east":{"model":"simpauto:item_dropper_horizontal", "x":90},
-    "facing=south":{"model":"simpauto:item_dropper_horizontal", "x":180},
-    "facing=west":{"model":"simpauto:item_dropper_horizontal", "x":270}
+  "variants": {
+    "facing=up,triggered=false":{"model": "simpauto:item_dropper_vertical"},
+    "facing=down,triggered=false":{"model":"simpauto:item_dropper_vertical","x":180},
+    "facing=north,triggered=false":{"model":"simpauto:item_dropper_horizontal"},
+    "facing=east,triggered=false":{"model":"simpauto:item_dropper_horizontal", "x":90},
+    "facing=south,triggered=false":{"model":"simpauto:item_dropper_horizontal", "x":180},
+    "facing=west,triggered=false":{"model":"simpauto:item_dropper_horizontal", "x":270},
+    "facing=up,triggered=true":{"model": "simpauto:item_dropper_vertical"},
+    "facing=down,triggered=true":{"model":"simpauto:item_dropper_vertical","x":180},
+    "facing=north,triggered=true":{"model":"simpauto:item_dropper_horizontal"},
+    "facing=east,triggered=true":{"model":"simpauto:item_dropper_horizontal", "x":90},
+    "facing=south,triggered=true":{"model":"simpauto:item_dropper_horizontal", "x":180},
+    "facing=west,triggered=true":{"model":"simpauto:item_dropper_horizontal", "x":270}
   }
 }

@@ -2,7 +2,7 @@
   "parent":"block/orientable",
   "textures": {
     "top":"blocks/furnace_top",
-    "front":"item_dropper_front_horizontal",
-    "side":"item_dropper_side"
+    "front":"simpauto:blocks/item_dropper_front_horizontal",
+    "side":"simpauto:blocks/item_dropper_side"
   }
 }
