@@ -2,7 +2,7 @@
 {
   "modid": "simpauto",
   "name": "Simple Automation",
-  "description": "Example placeholder mod.",
+  "description": "Added some simple and convenient block for automation.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

@@ -1,5 +1,6 @@
 package fvortex.simpauto.proxy;
 
+import fvortex.simpauto.ConfigLoader;
 import fvortex.simpauto.block.BlockRegistry;
 import fvortex.simpauto.item.ItemRegistry;
 import fvortex.simpauto.tileentity.TileEntityRegistry;
@@ -18,5 +19,6 @@ public class CommonProxy {
         BlockRegistry.preInit();
         ItemRegistry.preInit();
         new TileEntityRegistry(event);
+        new ConfigLoader(event);
     }
 }
