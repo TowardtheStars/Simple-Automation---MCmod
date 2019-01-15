@@ -2,7 +2,9 @@ package fvortex.simpauto.tileentity;
 
 import fvortex.simpauto.block.BlockUpSideDownHopper;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockChest;
+import net.minecraft.block.BlockHopper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -133,7 +135,7 @@ public class TileEntityUpSideDownHopper extends TileEntityHopper {
                     flag = this.transferItemsOut();
                 }
 
-                if (!this.isFull()) {
+                if (!this.isFull() && gravityFix(world, pos)) {
                     flag = pullItems(this) || flag;
                 }
 
@@ -148,6 +150,13 @@ public class TileEntityUpSideDownHopper extends TileEntityHopper {
         } else {
             return false;
         }
+    }
+
+    private static boolean gravityFix(World world, BlockPos pos)
+    {
+        return !(world.getBlockState(pos.down()).getBlock() instanceof BlockHopper) &&
+                !(!world.getBlockState(pos.down()).isFullBlock() &&
+                        world.getBlockState(pos.down(2)).getBlock() instanceof BlockHopper);
     }
 
     private boolean isInventoryEmpty() {
