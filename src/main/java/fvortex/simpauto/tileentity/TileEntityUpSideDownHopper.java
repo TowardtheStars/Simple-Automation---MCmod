@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockHopper;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -157,6 +158,11 @@ public class TileEntityUpSideDownHopper extends TileEntityHopper {
         return !(world.getBlockState(pos.down()).getBlock() instanceof BlockHopper) &&
                 !(!world.getBlockState(pos.down()).isFullBlock() &&
                         world.getBlockState(pos.down(2)).getBlock() instanceof BlockHopper);
+    }
+
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
+    {
+        return oldState.getBlock() != newSate.getBlock();
     }
 
     private boolean isInventoryEmpty() {

@@ -129,6 +129,11 @@ public class TileEntityFarmer extends TileEntity implements ITickable
         return true;
     }
 
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
+    {
+        return oldState.getBlock() != newSate.getBlock();
+    }
+
 
     public void update() {
         if (!this.world.isRemote)

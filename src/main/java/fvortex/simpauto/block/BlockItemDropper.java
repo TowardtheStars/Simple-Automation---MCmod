@@ -1,11 +1,9 @@
 package fvortex.simpauto.block;
 
 import fvortex.simpauto.tileentity.TileEntityItemDropper;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.BlockDispenser;
-import net.minecraft.block.BlockDropper;
-import net.minecraft.block.BlockSourceImpl;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
@@ -17,6 +15,7 @@ import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -75,7 +74,9 @@ public class BlockItemDropper extends BlockDropper {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityItemDropper();
+        if (!worldIn.isRemote)
+            return new TileEntityItemDropper();
+        return null;
     }
 
     @Override
@@ -104,4 +105,12 @@ public class BlockItemDropper extends BlockDropper {
             }
         }
     }
+
+//    @Override
+//    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+//        boolean isPowered = worldIn.isBlockPowered(pos) || worldIn.isBlockPowered(pos.up());
+//        worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+//        worldIn.setBlockState(pos, state.withProperty(TRIGGERED, isPowered), 4);
+//    }
+
 }
