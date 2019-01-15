@@ -2,9 +2,9 @@
 {
   "modid": "simpauto",
   "name": "Simple Automation",
-  "description": "Example placeholder mod.",
   "version": "v0.4.4",
   "mcversion": "1.12.2",
+  "description": "Added some simple and convenient block for automation.",
   "url": "",
   "updateUrl": "",
   "authorList": ["FVortex"],

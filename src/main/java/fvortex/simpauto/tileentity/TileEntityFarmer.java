@@ -15,25 +15,46 @@ import java.util.List;
 
 public class TileEntityFarmer extends TileEntity implements ITickable
 {
-    private static final int RANGE = 9;
+    private static int RANGE = 0;
+    private static int DIAMETER = 1;
+    private static int AREA = 0;
     private int ticker;
     private int posCounter;
-    private static final int TICK_SPEED = 5;
+    private static int TICK_INTERVAL = 5;
     private BlockPos currentManagingPos;
+
+    public static void setRange(int range)
+    {
+        if (range > 0) {
+            TileEntityFarmer.RANGE = range;
+            TileEntityFarmer.DIAMETER = 2 * range + 1;
+            TileEntityFarmer.AREA = DIAMETER * DIAMETER - 1;
+        }
+        else {
+            TileEntityFarmer.RANGE = TileEntityFarmer.AREA = 0;
+            TileEntityFarmer.DIAMETER = 1;
+        }
+    }
+    public static void setTickInterval(int interval)
+    {
+        if (interval > 0) TICK_INTERVAL = interval;
+        else TICK_INTERVAL = 1;
+    }
 
     public TileEntityFarmer()
     {
         super();
-        ticker = TICK_SPEED;
+        ticker = TICK_INTERVAL;
         posCounter = -1;
-        currentManagingPos = this.pos.add(-RANGE/2, 0, -RANGE/2);
+        currentManagingPos = this.pos.add(-RANGE, 0, -RANGE);
     }
 
     private void toNextPos()
     {
         ++posCounter;
-        currentManagingPos = this.pos.add(posCounter / RANGE - RANGE/2, 0, posCounter % RANGE - RANGE/2);
-        if (posCounter == RANGE * RANGE - 1)
+        if (posCounter << 1 == AREA) ++posCounter; // to save time, don't try to harvest the machine itself
+        currentManagingPos = this.pos.add(posCounter / DIAMETER - RANGE, 0, posCounter % DIAMETER - RANGE);
+        if (posCounter == AREA)
             posCounter = -1;
     }
 
@@ -116,7 +137,7 @@ public class TileEntityFarmer extends TileEntity implements ITickable
             {
                 toNextPos();
                 managePos();
-                ticker = TICK_SPEED;
+                ticker = TICK_INTERVAL;
             }
         }
     }
