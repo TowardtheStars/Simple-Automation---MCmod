@@ -15,7 +15,6 @@ public class TileEntityItemDropper extends TileEntityDropper implements ITickabl
     public TileEntityItemDropper()
     {
         super();
-        System.out.println("A new TileEntityItemDropper was created");
     }
     private int transferCooldown = -1;
 
