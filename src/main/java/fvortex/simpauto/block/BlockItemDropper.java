@@ -92,11 +92,7 @@ public class BlockItemDropper extends BlockDropper {
         {
             int i = tileentitydispenser.getDispenseSlot();
 
-            if (i < 0)
-            {
-                worldIn.playEvent(1001, pos, 0);
-            }
-            else
+            if (i >= 0)
             {
                 ItemStack itemstack = tileentitydispenser.getStackInSlot(i);
 
