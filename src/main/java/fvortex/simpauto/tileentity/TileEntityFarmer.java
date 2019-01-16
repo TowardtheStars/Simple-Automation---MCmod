@@ -1,13 +1,17 @@
 package fvortex.simpauto.tileentity;
 
+import fvortex.simpauto.helper.FarmHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -22,6 +26,20 @@ public class TileEntityFarmer extends TileEntity implements ITickable
     private int posCounter;
     private static int TICK_INTERVAL = 5;
     private BlockPos currentManagingPos;
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
+        compound.setInteger("managingPosId", posCounter);
+        return compound;
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        this.posCounter = compound.getInteger("managingPosId");
+    }
+
 
     public static void setRange(int range)
     {
@@ -66,7 +84,7 @@ public class TileEntityFarmer extends TileEntity implements ITickable
             tile = this.world.getTileEntity(this.pos.down());
 
         IBlockState managing = this.world.getBlockState(currentManagingPos);
-        if (isBlockHarvestable(this.world, currentManagingPos, managing))
+        if (FarmHelper.isHarvestable(world, currentManagingPos, this))
             if (tile != null)
             {
                 inventory = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -81,6 +99,7 @@ public class TileEntityFarmer extends TileEntity implements ITickable
     {
         Block block = blockState.getBlock();
         return (block instanceof IGrowable) && !((IGrowable) block).canGrow(world, pos, blockState, !world.isRemote);
+
     }
 
     private static List<ItemStack> getHarvestItemList
@@ -113,6 +132,7 @@ public class TileEntityFarmer extends TileEntity implements ITickable
                 }
             }
             world.setBlockState(pos, blockState.getBlock().getDefaultState());
+            ItemDye.spawnBonemealParticles(world, pos, 0);
         }
     }
 

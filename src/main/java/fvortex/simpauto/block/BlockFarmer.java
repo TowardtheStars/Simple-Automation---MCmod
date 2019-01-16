@@ -10,8 +10,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraft.util.text.translation.LanguageMap;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -43,6 +42,6 @@ public class BlockFarmer extends BlockContainer
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.translateToLocal("tile.farmer.tooltip"));
+        tooltip.add(I18n.format("tile.farmer.tooltip"));
     }
 }
