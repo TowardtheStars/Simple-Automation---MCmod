@@ -90,60 +90,6 @@ public class TileEntityFarmer extends TileEntity implements ITickable
             }
         }
     }
-//
-//    private static boolean isBlockHarvestable(World world, BlockPos pos, IBlockState blockState)
-//    {
-//        Block block = blockState.getBlock();
-//        return (block instanceof IGrowable) && !((IGrowable) block).canGrow(world, pos, blockState, !world.isRemote);
-//
-//    }
-
-//    private static List<ItemStack> getHarvestItemList
-//            (World world, BlockPos pos, IBlockState blockState)
-//    {
-//        List<ItemStack> dropList;
-//        Block block = blockState.getBlock();
-//        dropList = block.getDrops(world, pos, blockState, 0);
-//        for (ItemStack stack :
-//                dropList) {
-//            if (stack.getCount() > 1)
-//                stack.shrink(1);
-//        }
-//        return dropList;
-//    }
-
-
-//    private static void harvest(World world, BlockPos pos, IBlockState blockState, IItemHandler inventory)
-//    {
-//        List<ItemStack> dropList;
-//
-//        // check if there is enough place for harvest first
-//        dropList = getHarvestItemList(world, pos, blockState);
-//        if (canInsertItemStackList(dropList, inventory))
-//        {
-//            for (ItemStack stack :
-//                    dropList) {
-//                for (int i = 0; i < inventory.getSlots() && !stack.isEmpty(); i++) {
-//                    stack = inventory.insertItem(i, stack, false);
-//                }
-//            }
-//            world.setBlockState(pos, blockState.getBlock().getDefaultState());
-//            ItemDye.spawnBonemealParticles(world, pos, 0);
-//        }
-//    }
-
-//    public static boolean canInsertItemStackList(List<ItemStack> dropList, IItemHandler inventory)
-//    {
-//        for (ItemStack stack : dropList) {
-//            ItemStack leftOver;
-//            leftOver = stack;
-//            for (int i = 0; i < inventory.getSlots(); i++) {
-//                leftOver = inventory.insertItem(i, leftOver, true);
-//            }
-//            if (!leftOver.isEmpty()) return false;
-//        }
-//        return true;
-//    }
 
     public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
     {

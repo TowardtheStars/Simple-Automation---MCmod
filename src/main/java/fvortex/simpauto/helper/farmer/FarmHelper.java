@@ -27,38 +27,6 @@ public class FarmHelper {
             actionList.add(new ActionHarvestPamCropGrowable());
     }
 
-//    @Optional.Method(modid = "harvestcraft")
-//    public static boolean isPamCrop(IBlockState state)
-//    {
-//        return state.getBlock() instanceof PamCropGrowable;
-//    }
-//
-//    @Optional.Method(modid = "harvestcraft")
-//    public static boolean isPamCropRipe(IBlockState state)
-//    {
-//        PamCropGrowable block = (PamCropGrowable) state.getBlock();
-//        return block.isMature(state);
-//    }
-//
-//    public static boolean isHarvestable(World world, BlockPos pos, TileEntityFarmer farmer)
-//    {
-//        IBlockState state = world.getBlockState(pos);
-//        if (Loader.isModLoaded("harvestcraft"))
-//        {
-//            if (isPamCrop(state))
-//                return isPamCropRipe(state);
-//        }
-//        if (state.getBlock() instanceof BlockCrops)
-//        {
-//            return ((BlockCrops) state.getBlock()).isMaxAge(state);
-//        }
-//        if (state.getBlock() instanceof BlockStem)
-//            return state.getValue(BlockStem.FACING) != EnumFacing.UP;
-//        if (state.getBlock() instanceof BlockReed)
-//            return world.getBlockState(pos.up()) instanceof BlockReed;
-//        return false;
-//    }
-
     public static boolean canInsertItemStackList(List<ItemStack> dropList, IItemHandler inventory)
     {
         for (ItemStack stack : dropList) {
