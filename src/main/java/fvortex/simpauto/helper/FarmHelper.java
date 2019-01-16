@@ -5,6 +5,9 @@ import com.pam.harvestcraft.blocks.growables.BlockPamFruitLog;
 import com.pam.harvestcraft.blocks.growables.PamCropGrowable;
 import fvortex.simpauto.tileentity.TileEntityFarmer;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockMelon;
+import net.minecraft.block.BlockPumpkin;
+import net.minecraft.block.BlockStem;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -39,7 +42,9 @@ public class FarmHelper {
         {
             return ((BlockCrops) state.getBlock()).isMaxAge(state);
         }
-        return false;
+        if (state.getBlock() instanceof BlockStem)
+            return false;
+        return  (state.getBlock() instanceof BlockMelon || state.getBlock() instanceof BlockPumpkin);
     }
 
 }
