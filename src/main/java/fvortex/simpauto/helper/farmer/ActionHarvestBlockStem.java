@@ -33,10 +33,9 @@ public class ActionHarvestBlockStem extends ActionHarvestCrop {
      */
     @Override
     public boolean canHarvest(World world, BlockPos pos, IBlockState state) {
-        System.out.println("can harvest crop.");
-        return state.getValue(BlockStem.FACING) != EnumFacing.UP;
-
+        return state.getBlock().getActualState(state, world, pos).getValue(BlockStem.FACING) != EnumFacing.UP;
     }
+
 
     /**
      * Same as getDrop for Block. Override to be compatible with BlockStem.
@@ -49,16 +48,14 @@ public class ActionHarvestBlockStem extends ActionHarvestCrop {
      */
     @Override
     public void getCropDrop(NonNullList<ItemStack> itemStackList, World world, BlockPos pos, IBlockState state, int fortune) {
-        BlockPos fruitPos = getFruitPos(pos, state);
+        BlockPos fruitPos = getFruitPos(world, pos, state);
         world.getBlockState(fruitPos).getBlock().getDrops(itemStackList, world, fruitPos, world.getBlockState(fruitPos), fortune);
     }
 
-    private static BlockPos getFruitPos(BlockPos pos, IBlockState state)
+    private static BlockPos getFruitPos(World world, BlockPos pos, IBlockState state)
     {
-        EnumFacing facing = state.getValue(BlockStem.FACING);
-        BlockPos pos1 = pos.add(facing.getFrontOffsetX(), 0, facing.getFrontOffsetZ());
-        System.out.println("fruit pos:" + pos1.toString());
-        return pos1;
+        EnumFacing facing = state.getBlock().getActualState(state, world, pos).getValue(BlockStem.FACING);
+        return pos.add(facing.getFrontOffsetX(), 0, facing.getFrontOffsetZ());
     }
 
     /**
@@ -69,7 +66,6 @@ public class ActionHarvestBlockStem extends ActionHarvestCrop {
      */
     @Override
     public void resetCrop(World world, BlockPos pos) {
-        world.setBlockToAir(getFruitPos(pos, world.getBlockState(pos)));
-        System.out.println("reset success");
+        world.setBlockToAir(getFruitPos(world, pos, world.getBlockState(pos)));
     }
 }
