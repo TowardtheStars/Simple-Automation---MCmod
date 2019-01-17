@@ -1,5 +1,6 @@
 package fvortex.simpauto.helper.farmer;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -33,7 +34,21 @@ public abstract class ActionHarvestMultiStageCrops extends ActionHarvestCrop {
         return harvestableMeta.contains(state.getBlock().getMetaFromState(state));
     }
 
-    public abstract int getResetMeta();
+    /**
+     *
+     * @return whether the crop should be reset given the current meta
+     */
+    public abstract boolean shouldReset(int meta);
+
+    /**
+     *
+     * @param block
+     * @return the block state the crop should be after harvesting
+     */
+    public IBlockState getResetState(Block block)
+    {
+        return block.getDefaultState();
+    }
 
     /**
      * After harvesting, we need to reset the crop
@@ -43,7 +58,7 @@ public abstract class ActionHarvestMultiStageCrops extends ActionHarvestCrop {
      */
     @Override
     public void resetCrop(World world, BlockPos pos, IBlockState state) {
-        if (state.getBlock().getMetaFromState(state) == getResetMeta())
-            super.resetCrop(world, pos, state);
+        if (shouldReset(state.getBlock().getMetaFromState(state)))
+            world.setBlockState(pos, getResetState(state.getBlock()));
     }
 }

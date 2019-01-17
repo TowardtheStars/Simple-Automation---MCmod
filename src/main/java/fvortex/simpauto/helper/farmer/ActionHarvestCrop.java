@@ -1,6 +1,7 @@
 package fvortex.simpauto.helper.farmer;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -21,14 +22,6 @@ public abstract class ActionHarvestCrop {
         return false;
     }
 
-    /**
-     * Decide whether the crop need to be replanted after harvest
-     * @return
-     */
-    public boolean needReplant()
-    {
-        return false;
-    }
 
     /**
      * Judge whether the block can be harvested
