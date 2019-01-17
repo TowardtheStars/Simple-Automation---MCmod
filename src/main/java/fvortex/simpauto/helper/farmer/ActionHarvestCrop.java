@@ -59,9 +59,9 @@ public abstract class ActionHarvestCrop {
      * @param world
      * @param pos
      */
-    public void resetCrop(World world, BlockPos pos)
+    public void resetCrop(World world, BlockPos pos, IBlockState state)
     {
-        world.setBlockState(pos, world.getBlockState(pos).getBlock().getDefaultState());
+        world.setBlockState(pos, state.getBlock().getDefaultState());
     }
 
 

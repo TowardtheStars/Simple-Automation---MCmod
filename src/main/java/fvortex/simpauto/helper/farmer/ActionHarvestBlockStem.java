@@ -65,7 +65,7 @@ public class ActionHarvestBlockStem extends ActionHarvestCrop {
      * @param pos
      */
     @Override
-    public void resetCrop(World world, BlockPos pos) {
-        world.setBlockToAir(getFruitPos(world, pos, world.getBlockState(pos)));
+    public void resetCrop(World world, BlockPos pos, IBlockState state) {
+        world.setBlockToAir(getFruitPos(world, pos, state));
     }
 }

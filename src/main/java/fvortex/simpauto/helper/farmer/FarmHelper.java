@@ -63,7 +63,7 @@ public class FarmHelper {
                         stack = inventory.insertItem(i, stack, false);
                     }
                 }
-                actionType.resetCrop(world, pos);
+                actionType.resetCrop(world, pos, state);
                 ItemDye.spawnBonemealParticles(world, pos, 15);
             }
         }

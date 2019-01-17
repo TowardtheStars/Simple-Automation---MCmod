@@ -36,7 +36,7 @@ public class ActionHarvestBlockReed extends ActionHarvestCrop {
     }
 
     @Override
-    public void resetCrop(World world, BlockPos pos) {
+    public void resetCrop(World world, BlockPos pos, IBlockState state) {
 
         for (int i = getMaxHeight()- 1; i > 0; i--) {
             if (world.getBlockState(pos.up(i)).getBlock() instanceof BlockReed)
