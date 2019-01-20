@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "simpauto:upside_down_hopper"
+  },
+  "type": "forge:ore_shaped",
+  "pattern":[
+    " # ",
+    "#*#",
+    "# #"
+  ],
+  "key":{
+    "#": {
+      "type":"forge:ore_dict",
+      "ore":"ingotIron"
+    },
+    "*":{
+      "type":"forge:ore_dict",
+      "ore":"chestWood"
+    }
+  }
+}
