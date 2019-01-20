@@ -69,6 +69,7 @@ public class BlockItemDropper extends BlockDropper {
     public BlockItemDropper()
     {
         super();
+        this.setHardness(1.0f);
     }
 
     @Nullable

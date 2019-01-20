@@ -1,6 +1,7 @@
 package fvortex.simpauto.helper.farmer;
 
 import com.pam.harvestcraft.blocks.growables.PamCropGrowable;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -15,7 +16,7 @@ public class ActionHarvestPamCropGrowable extends ActionHarvestCrop {
     @Override
     @Optional.Method(modid = "harvestcraft")
     public boolean shouldApplyAction(World world, BlockPos pos, IBlockState state) {
-        return state.getBlock() instanceof PamCropGrowable;
+        return state.getBlock() instanceof PamCropGrowable && !(state.getBlock() instanceof BlockCrops);
     }
 
     /**

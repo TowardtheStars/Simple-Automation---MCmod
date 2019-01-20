@@ -1,7 +1,6 @@
 package fvortex.simpauto.helper.farmer;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -64,7 +63,8 @@ public class FarmHelper {
                     }
                 }
                 actionType.resetCrop(world, pos, state);
-                ItemDye.spawnBonemealParticles(world, pos, 15);
+                if (!world.isRemote)
+                    world.playEvent(2005, pos, 0); // Def in net.minecraft.client.renderer.RenderGlobal
             }
         }
 
