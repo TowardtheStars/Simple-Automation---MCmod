@@ -53,7 +53,7 @@ public class BlockUpSideDownHopper extends BlockContainer
     {
         super(Material.IRON, MapColor.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP).withProperty(ENABLED, Boolean.valueOf(true)));
-        this.setCreativeTab(CreativeTabs.REDSTONE);
+        this.setHardness(2.0f);
     }
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)

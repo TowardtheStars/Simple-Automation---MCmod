@@ -22,9 +22,9 @@ public class BlockFarmer extends BlockContainer
     public BlockFarmer()
     {
         super(Material.IRON, MapColor.IRON);
-        this.setHardness(0.5F);
+        this.setHardness(2.0F);
         this.setSoundType(SoundType.METAL);
-        this.setHarvestLevel("", 0);
+        this.setHarvestLevel("pickaxe", 1);
     }
 
     @Nullable
